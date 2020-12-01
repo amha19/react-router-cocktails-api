@@ -1,0 +1,12 @@
+.about-section {
+  width: var(--smallWidth);
+  max-width: var(--maxWidth);
+  margin: 4rem auto;
+}
+
+.about-section p {
+  line-height: 2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-align: justify;
+}
