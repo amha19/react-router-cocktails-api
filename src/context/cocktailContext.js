@@ -1,22 +1,30 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 
-const AppContext = React.createContext();
+import { fetchData } from '../utils/utils';
+import { reducer } from './reducer';
+
+const AppContext = React.createContext({
+  dispatch: () => {},
+  isLoading: true,
+  drinks: [],
+  name: '',
+});
 
 const initialState = {
   isLoading: true,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'value':
-      return state;
-    default:
-      throw new Error('No action type found!');
-  }
+  drinks: [],
+  name: '',
 };
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    fetchData().then((drinks) =>
+      dispatch({ type: 'SET_DRINKS', payload: drinks })
+    );
+  }, []);
+
   return (
     <AppContext.Provider value={{ ...state, dispatch }}>
       {children}

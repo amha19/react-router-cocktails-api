@@ -9,6 +9,10 @@
   margin-bottom: 3.5rem;
   margin-top: 1rem;
 }
+.section-title.empty {
+  font-size: 1.25rem;
+  color: var(--primaryColor);
+}
 .cocktails-center {
   width: var(--smallWidth);
   margin: 0 auto;

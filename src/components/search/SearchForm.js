@@ -1,9 +1,11 @@
 import React from 'react';
-// import { useGlobalContext } from '../context'
+
+import { useGlobalContext } from '../../context/cocktailContext';
 
 import './SearchForm.css';
 
 const SearchForm = () => {
+  const { name, dispatch } = useGlobalContext();
   return (
     <section className="search">
       <form className="search-form">
@@ -11,8 +13,12 @@ const SearchForm = () => {
           <label htmlFor="name">search your favorite cocktail</label>
           <input
             type="text"
+            placeholder="e.g. adam"
             id="name"
-            onChange={() => console.log('find cocktail')}
+            value={name}
+            onChange={(e) =>
+              dispatch({ type: 'FILTER_NAME', payload: e.target.value })
+            }
           />
         </div>
       </form>

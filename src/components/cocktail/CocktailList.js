@@ -1,15 +1,31 @@
 import React from 'react';
 
-// import Cocktail from '../Cocktail';
-// import Loading from '../Loading';
-// import { useGlobalContext } from '../context';
 import './CocktailList.css';
+import { useGlobalContext } from '../../context/cocktailContext';
+import Loading from '../../components/loading/Loading';
+import Cocktail from './singleCockail/Cocktail';
 
 const CocktailList = () => {
+  const { isLoading, drinks, name } = useGlobalContext();
+
+  if (isLoading) return <Loading />;
+
+  const filteredDrinks = [...drinks].filter((drink) => {
+    return drink.strDrink.toLowerCase().indexOf(name.toLowerCase()) !== -1;
+  });
+
   return (
     <section className="section">
       <header className="section-title">Cocktails</header>
-      <main className="cocktails-center"></main>
+      {filteredDrinks.length > 0 ? (
+        <main className="cocktails-center">
+          {filteredDrinks.map((drink, index) => {
+            return <Cocktail key={index} {...drink} />;
+          })}
+        </main>
+      ) : (
+        <p className="section-title empty">no cocktail matches your search</p>
+      )}
     </section>
   );
 };
