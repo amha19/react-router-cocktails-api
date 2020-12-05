@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import './SingleCocktail.css';
-import { useGlobalContext } from '../../context/cocktailContext';
 import { fetchData } from '../../utils/utils';
 import Loading from '../../components/loading/Loading';
 import Error from '../error/Error';
@@ -10,19 +9,24 @@ import Error from '../error/Error';
 const SingleCocktail = () => {
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const { drinks, dispatch } = useGlobalContext();
+  const [drinks, setDrinks] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    fetchData().then((data) => {
-      dispatch({ type: 'SET_DRINKS', payload: data });
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
+    fetchData(url).then((data) => {
+      if (!data) {
+        setError(true);
+        return;
+      }
+      const { drinks } = data;
+      setDrinks(drinks[0]);
       setIsLoading(false);
     });
-  }, [dispatch]);
+  }, [id]);
 
+  if (error) return <Error />;
   if (isLoading) return <Loading />;
-
-  const drink = drinks.find((d) => d.idDrink === id);
-  if (!drink) return <Error />;
 
   const {
     strDrink,
@@ -31,12 +35,12 @@ const SingleCocktail = () => {
     strAlcoholic,
     strGlass,
     strInstructions,
-  } = drink;
+  } = drinks;
 
   let ingredients = [];
-  for (let i in drink) {
-    if (i.includes('strIngredient') && drink[i] !== null)
-      ingredients.push(drink[i]);
+  for (let i in drinks) {
+    if (i.includes('strIngredient') && drinks[i] !== null)
+      ingredients.push(drinks[i]);
   }
 
   return (

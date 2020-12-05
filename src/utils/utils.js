@@ -1,10 +1,11 @@
-const fetchData = async () => {
-  const response = await fetch(
-    'https://www.thecocktaildb.com/api/json/v1/1/search.php?s='
-  );
-  const data = await response.json();
-  const { drinks } = data;
-  return drinks;
+const fetchData = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export { fetchData };

@@ -20,9 +20,11 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    fetchData().then((drinks) =>
-      dispatch({ type: 'SET_DRINKS', payload: drinks })
-    );
+    const url = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+    fetchData(url).then((data) => {
+      const { drinks } = data;
+      dispatch({ type: 'SET_DRINKS', payload: drinks });
+    });
   }, []);
 
   return (
