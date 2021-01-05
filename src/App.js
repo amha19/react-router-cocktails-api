@@ -19,12 +19,8 @@ const App = () => {
         <Route path="/about">
           <About />
         </Route>
-        <Route path="/cocktail/:id">
-          <SingleCocktail />
-        </Route>
-        <Route path="*">
-          <Error />
-        </Route>
+        <Route path="/cocktail/:id" component={SingleCocktail} />
+        <Route path="*" component={Error} />
       </Switch>
     </BrowserRouter>
   );
