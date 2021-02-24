@@ -6,9 +6,10 @@ import './SearchForm.css';
 
 const SearchForm = () => {
   const { name, dispatch } = useGlobalContext();
+
   return (
     <section className="search">
-      <form className="search-form">
+      <form className="search-form" onSubmit={(e) => e.preventDefault()}>
         <div className="form-control">
           <label htmlFor="name">search your favorite cocktail</label>
           <input
