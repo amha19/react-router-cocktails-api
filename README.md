@@ -1,6 +1,6 @@
 # Cocktails Api App
 
-This app fetches cocktails Api displays detailed information about a selected drink.
+This app fetches cocktails Api and displays detailed information about a selected drink.
 
 ## Tech/Stack
 
@@ -11,6 +11,14 @@ This app fetches cocktails Api displays detailed information about a selected dr
 
 - Searching feature
 - Routing 
+
+## Demo
+
+![image](https://user-images.githubusercontent.com/34722096/109067965-daae9f00-76b4-11eb-9ac5-59325dcc8b68.png)
+
+![image](https://user-images.githubusercontent.com/34722096/109068062-f9ad3100-76b4-11eb-9a35-92796615247c.png)
+
+![image](https://user-images.githubusercontent.com/34722096/109068221-2b25fc80-76b5-11eb-8b39-b6a2fb6b2f10.png)
 
 ### `yarn start`
 
