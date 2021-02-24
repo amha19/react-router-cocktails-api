@@ -1,6 +1,16 @@
 # Cocktails Api App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app fetches cocktails Api displays detailed information about a selected drink.
+
+## Tech/Stack
+
+- React
+- React context
+
+## Features
+
+- Searching feature
+- Routing 
 
 ### `yarn start`
 
