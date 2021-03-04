@@ -20,7 +20,11 @@ This app fetches cocktails Api and displays detailed information about a selecte
 
 ![image](https://user-images.githubusercontent.com/34722096/109068221-2b25fc80-76b5-11eb-8b39-b6a2fb6b2f10.png)
 
-### `yarn start`
+### `npm install`
+
+Installs all dependencies.
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
